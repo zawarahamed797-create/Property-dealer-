@@ -3,214 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Hasan Real Estate & Builders</title>
+    <title>Al Hasan Real Estate - Search Enabled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { 
-            --primary: #1a2a6c; /* Elegant Navy Blue */
-            --gold: #b8860b;    /* Premium Gold */
-            --bg: #f4f7f6;
-            --white: #ffffff;
-        }
-        
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg); color: #333; direction: rtl; }
+        :root { --primary: #1a2a6c; --gold: #b8860b; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--bg); direction: rtl; }
         
         /* Header */
-        header { 
-            background: var(--primary); 
-            color: white; 
-            padding: 15px 5%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 4px solid var(--gold);
-        }
+        header { background: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 4px solid var(--gold); }
         .logo { font-size: 24px; font-weight: bold; color: var(--gold); text-decoration: none; }
-        .contact-btn { 
-            background: var(--gold); 
-            color: white; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            text-decoration: none; 
-            font-weight: bold;
-            font-size: 14px;
-        }
+        .contact-btn { background: var(--gold); color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; }
 
-        /* Hero Section */
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000'); 
-            height: 400px; 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            color: white; 
-            text-align: center;
-        }
-        .hero h1 { font-size: 3rem; margin: 0; }
-        .hero p { font-size: 1.2rem; color: var(--gold); margin-top: 10px; }
-
-        /* Search Bar Placeholder */
-        .search-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: -50px auto 30px;
-            max-width: 800px;
-            display: flex;
-            gap: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .search-box input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        /* Search Section */
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000'); height: 300px; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        
+        .search-container { background: white; padding: 20px; border-radius: 10px; margin: -40px auto 30px; max-width: 800px; width: 90%; display: flex; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .search-container input { flex: 1; padding: 12px; border: 2px solid #eee; border-radius: 5px; font-size: 16px; outline: none; transition: 0.3s; }
+        .search-container input:focus { border-color: var(--gold); }
 
         /* Property Grid */
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .section-title { 
-            text-align: right; 
-            font-size: 28px; 
-            border-right: 5px solid var(--gold); 
-            padding-right: 15px; 
-            margin-bottom: 30px; 
-            color: var(--primary);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
 
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 25px; 
-        }
-
-        /* Property Card */
-        .card { 
-            background: var(--white); 
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-10px); }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         .card img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 20px; text-align: right; }
-        .price { color: var(--gold); font-size: 22px; font-weight: 800; margin-bottom: 5px; }
-        .title { font-size: 18px; font-weight: 600; margin: 5px 0; color: var(--primary); }
+        .price { color: var(--gold); font-size: 22px; font-weight: 800; }
+        .title { font-size: 18px; font-weight: 600; margin: 10px 0; color: var(--primary); }
         .location { color: #777; font-size: 14px; margin-bottom: 15px; }
-        .features { 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid #eee; 
-            padding-top: 15px;
-            font-size: 13px;
-            color: #555;
-        }
 
-        .btn-whatsapp { 
-            display: block; 
-            background: #25D366; 
-            color: white; 
-            text-align: center; 
-            padding: 12px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-
-        /* Footer */
-        footer { background: var(--primary); color: white; text-align: center; padding: 40px 0; margin-top: 50px; }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .search-box { flex-direction: column; margin: 20px; }
-        }
+        .btn-whatsapp { display: block; background: #25D366; color: white; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; border-radius: 8px; }
+        
+        /* No Results Message */
+        #no-results { display: none; text-align: center; font-size: 20px; color: #777; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
     <a href="#" class="logo">Al Hasan Real Estate</a>
-    <a href="tel:03488222368" class="contact-btn"><i class="fas fa-phone"></i> 0348 8222368</a>
+    <a href="tel:03488222368" class="contact-btn">0348-8222368</a>
 </header>
 
 <div class="hero">
-    <h1>اپنے خوابوں کا گھر تلاش کریں</h1>
-    <p>اعتماد اور شفافیت کے ساتھ پراپرٹی کی خرید و فروخت</p>
+    <h1>پراپرٹی تلاش کریں</h1>
 </div>
 
-<div class="search-box">
-    <input type="text" placeholder="شہر یا سوسائٹی کا نام لکھیں...">
-    <button style="background:var(--primary); color:white; border:none; padding:10px 25px; border-radius:5px; cursor:pointer;">تلاش کریں</button>
+<div class="search-container">
+    <input type="text" id="searchInput" onkeyup="searchProperty()" placeholder="شہر، سوسائٹی یا گھر کی تفصیل لکھیں...">
 </div>
 
 <div class="container">
-    <div class="section-title">تازہ ترین پراپرٹیز</div>
+    <div id="no-results">معذرت! اس نام کی کوئی پراپرٹی نہیں ملی۔</div>
     
-    <div class="grid">
+    <div class="grid" id="propertyGrid">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1580587771525-78b9bed2452b?q=80&w=400" alt="House">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9bed2452b?q=80&w=400">
             <div class="card-content">
                 <div class="price">روپے 1,25,00,000</div>
-                <div class="title">5 مرلہ جدید مکان براۓ فروخت</div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> ڈی ایچ اے، فیز 6</div>
-                <div class="features">
-                    <span><i class="fas fa-bed"></i> 3 بیڈ</span>
-                    <span><i class="fas fa-bath"></i> 4 باتھ</span>
-                    <span><i class="fas fa-th-large"></i> 5 مرلہ</span>
-                </div>
-                <a href="https://wa.me/923488222368?text=السلام علیکم! مجھے اس 5 مرلہ مکان میں دلچسپی ہے۔" class="btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> معلومات حاصل کریں
-                </a>
+                <h3 class="title">5 مرلہ جدید مکان براۓ فروخت</h3>
+                <div class="location">ڈی ایچ اے، فیز 6 لاہور</div>
+                <a href="https://wa.me/923488222368" class="btn-whatsapp">رابطہ کریں</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=400" alt="Plot">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=400">
             <div class="card-content">
                 <div class="price">روپے 85,00,000</div>
-                <div class="title">10 مرلہ رہائشی پلاٹ</div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> بحریہ ٹاؤن</div>
-                <div class="features">
-                    <span><i class="fas fa-road"></i> 40 فٹ روڈ</span>
-                    <span><i class="fas fa-check-circle"></i> پوزیشن ہولڈر</span>
-                </div>
-                <a href="https://wa.me/923488222368?text=السلام علیکم! مجھے اس 10 مرلہ پلاٹ کی تفصیلات چاہئیں۔" class="btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> رابطہ کریں
-                </a>
+                <h3 class="title">10 مرلہ رہائشی پلاٹ</h3>
+                <div class="location">بحریہ ٹاؤن کراچی</div>
+                <a href="https://wa.me/923488222368" class="btn-whatsapp">رابطہ کریں</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1560520550-d753bc808ed0?q=80&w=400" alt="Shop">
+            <img src="https://images.unsplash.com/photo-1560520550-d753bc808ed0?q=80&w=400">
             <div class="card-content">
                 <div class="price">روپے 45,000 / ماہانہ</div>
-                <div class="title">کمرشل دکان براۓ کرایہ</div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> مین مارکیٹ</div>
-                <div class="features">
-                    <span><i class="fas fa-store"></i> گراؤنڈ فلور</span>
-                    <span><i class="fas fa-bolt"></i> تھری فیز میٹر</span>
-                </div>
-                <a href="https://wa.me/923488222368?text=السلام علیکم! دکان کے کرایے کے بارے میں پوچھنا ہے۔" class="btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> ابھی بات کریں
-                </a>
+                <h3 class="title">کمرشل دکان براۓ کرایہ</h3>
+                <div class="location">مین مارکیٹ گوجرانوالہ</div>
+                <a href="https://wa.me/923488222368" class="btn-whatsapp">رابطہ کریں</a>
             </div>
         </div>
     </div>
 </div>
 
-<footer>
-    <h2>Al Hasan Real Estate & Builders</h2>
-    <p>پراپرٹی کی خرید و فروخت کا قابل اعتماد نام</p>
-    <p style="color: var(--gold); font-size: 20px;">0348-8222368</p>
-    <div style="margin-top: 20px;">
-        <i class="fab fa-facebook fa-2x" style="margin: 0 10px;"></i>
-        <i class="fab fa-instagram fa-2x" style="margin: 0 10px;"></i>
-    </div>
-</footer>
+<script>
+    function searchProperty() {
+        // 1. سرچ ان پٹ کی ویلیو حاصل کریں
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let grid = document.getElementById('propertyGrid');
+        let cards = grid.getElementsByClassName('card');
+        let noResults = document.getElementById('no-results');
+        let found = false;
+
+        // 2. تمام کارڈز کو چیک کریں
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].querySelector('.title').innerText.toLowerCase();
+            let location = cards[i].querySelector('.location').innerText.toLowerCase();
+            
+            // اگر لفظ ٹائٹل یا لوکیشن میں موجود ہے تو دکھائیں، ورنہ چھپا دیں
+            if (title.includes(input) || location.includes(input)) {
+                cards[i].style.display = "";
+                found = true;
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+
+        // 3. اگر کچھ نہ ملے تو میسج دکھائیں
+        noResults.style.display = found ? "none" : "block";
+    }
+</script>
 
 </body>
-      </html>
-
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Hasan Real Estate - Search Enabled</title>
+    <title>Yasir Property Dealer - Search Enabled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #1a2a6c; --gold: #b8860b; --bg: #f4f7f6; }
@@ -41,7 +41,7 @@
 <body>
 
 <header>
-    <a href="#" class="logo">Al Hasan Real Estate</a>
+    <a href="#" class="logo">Yasir Property Dealer</a>
     <a href="tel:03488222368" class="contact-btn">0348-8222368</a>
 </header>
 
@@ -91,19 +91,16 @@
 
 <script>
     function searchProperty() {
-        // 1. سرچ ان پٹ کی ویلیو حاصل کریں
         let input = document.getElementById('searchInput').value.toLowerCase();
         let grid = document.getElementById('propertyGrid');
         let cards = grid.getElementsByClassName('card');
         let noResults = document.getElementById('no-results');
         let found = false;
 
-        // 2. تمام کارڈز کو چیک کریں
         for (let i = 0; i < cards.length; i++) {
             let title = cards[i].querySelector('.title').innerText.toLowerCase();
             let location = cards[i].querySelector('.location').innerText.toLowerCase();
             
-            // اگر لفظ ٹائٹل یا لوکیشن میں موجود ہے تو دکھائیں، ورنہ چھپا دیں
             if (title.includes(input) || location.includes(input)) {
                 cards[i].style.display = "";
                 found = true;
@@ -112,7 +109,6 @@
             }
         }
 
-        // 3. اگر کچھ نہ ملے تو میسج دکھائیں
         noResults.style.display = found ? "none" : "block";
     }
 </script>
